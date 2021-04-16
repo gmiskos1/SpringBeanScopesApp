@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- load the properties file: sport.properties -->
+	<!--<context:property-placeholder location="classpath:general.properties"/> -->
+	
+    <!-- Define your beans here -->
+    
+    <!-- define the dependency -->
+    <bean id="myTaxService"
+   		class="com.demo.TaxServiceImpl">
+   	</bean>
+   	    
+ 	<bean id="myCar"
+ 		class="com.demo.Car"
+ 		scope="singleton">	
+ 		<!-- set up constructor injection -->
+ 		<constructor-arg ref="myTaxService" />
+ 	</bean>
+ 	
+ 	<bean id="mySportCar"
+ 		class="com.demo.SportCar"
+ 		scope="singleton">	
+ 		<!-- set up constructor injection -->
+ 		<constructor-arg ref="myTaxService" />
+ 	</bean>
+    
+</beans>
+
+
+
+
+
